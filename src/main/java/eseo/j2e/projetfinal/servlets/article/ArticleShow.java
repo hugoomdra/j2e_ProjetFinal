@@ -1,18 +1,16 @@
-package eseo.j2e.projetfinal.servlets;
+package eseo.j2e.projetfinal.servlets.article;
 
 import eseo.j2e.projetfinal.beans.DAOFactory;
 import eseo.j2e.projetfinal.beans.article.Article;
 import eseo.j2e.projetfinal.beans.article.DAOArticleJPA;
 
-import javax.persistence.Persistence;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(value = "/store")
-public class Home extends HttpServlet {
+@WebServlet("/articles")
+public class ArticleShow extends HttpServlet {
 
     private DAOArticleJPA daoArticle;
 
@@ -24,13 +22,14 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Article> articles =  daoArticle.getArticles();
+        Article article = daoArticle.getArticle(Integer.parseInt(request.getParameter("id")));
 
-        request.setAttribute("articles", articles);
-        request.setAttribute("content", "store");
-        request.setAttribute("sous_header_title", "Nos jeux");
-        request.setAttribute("sous_header_resume", "RETROUVEZ LES JEUX DISPONIBLES");
+        request.setAttribute("article", article);
+        request.setAttribute("content", "article_show");
+        request.setAttribute("sous_header_title", article.getName());
+        request.setAttribute("sous_header_resume", "Voici un de nos jeux");
         request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
+
     }
 
     @Override
