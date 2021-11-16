@@ -5,13 +5,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(value = "/store")
-public class Home extends HttpServlet {
+@WebServlet("/about")
+public class About extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("content", "store");
-        request.setAttribute("sous_header_title", "Nos jeux");
-        request.setAttribute("sous_header_resume", "RETROUVEZ LES JEUX DISPONIBLES");
+        request.setAttribute("content", "about");
+        request.setAttribute("sous_header_title", "A propos de nous");
+        request.setAttribute("sous_header_resume", "Découvrez en plus sur notre équipe de passioné");
         request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
     }
 

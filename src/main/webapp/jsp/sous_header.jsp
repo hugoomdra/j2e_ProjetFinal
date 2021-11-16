@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="breadcrumb-text">
-                    <p>Retrouvez les jeux disponibles</p>
-                    <h1>Nos jeux</h1>
+                    <p>${sous_header_resume}</p>
+                    <h1>${sous_header_title}</h1>
                 </div>
             </div>
         </div>

@@ -15,9 +15,9 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a href="#">Nos jeux</a>
+                            <li class="current-list-item"><a href="store">Nos jeux</a>
                             </li>
-                            <li><a href="about.html">A propos de nous</a></li>
+                            <li><a href="about">A propos de nous</a></li>
                             <li><a href="contact.html">Nous contacter</a></li>
                             <li>
                                 <div class="header-icons">
