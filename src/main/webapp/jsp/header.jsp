@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="top-header-area" id="sticker">
     <div class="container">
         <div class="row">
@@ -15,10 +16,11 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a href="store">Nos jeux</a>
+
+                            <li class="${content == 'store' ? "current-list-item" : ""}"><a href="store">Nos jeux</a>
                             </li>
-                            <li><a href="about">A propos de nous</a></li>
-                            <li><a href="contact.html">Nous contacter</a></li>
+                            <li class="${content == 'about' ? "current-list-item" : ""}"><a href="about">A propos de nous</a></li>
+                            <li><a href="">Nous contacter</a></li>
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
