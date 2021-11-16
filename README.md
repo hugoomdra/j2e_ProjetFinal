@@ -4,6 +4,7 @@ Dans le cadre du semestre 9, nous devons réaliser un projet web en Java.
 
 Voici le cahier des charges : [Cliquez ici](../OldProjetFinal/readme/cahier_des_charges.pdf)
 
+Pour faciliter la mise en place du travail et la qualité du rendu, nous avons utilisé un template front que nous avons modifié. 
 ## Installations
 
 ### Création de la base de données en local

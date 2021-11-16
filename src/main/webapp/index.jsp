@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>JSP - Hello World</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
 <h1><%= "Hello World!" %>
