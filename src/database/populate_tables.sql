@@ -1,3 +1,7 @@
+INSERT INTO client (firstName, lastName, email, password, rue, ville, codepostal, pays)
+VALUES ('Paul', 'Bistou', 'paul.bistou@reseau.eseo.fr', 'bistou', '5 rue des coquelicots', 'Floraville', '17139', 'France');
+
+
 INSERT INTO article (name, price, quantity, picture, type)
 VALUES ('Call Of Duty : Vandguard', 69.99, 5, 'cod_vandguard', 'XBOX ONE'),
        ('The Legend of Zelda', 59.99, 11, 'zelda', 'SWITCH'),

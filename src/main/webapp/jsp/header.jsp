@@ -21,9 +21,11 @@
                             </li>
                             <li class="${content == 'about' ? "current-list-item" : ""}"><a href="about">A propos de nous</a></li>
                             <li><a href="">Nous contacter</a></li>
+
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="" href="cart.html"><i class="fas fa-user-circle"></i></a>
                                 </div>
                             </li>
                         </ul>

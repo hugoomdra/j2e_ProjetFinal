@@ -2,6 +2,7 @@ package eseo.j2e.projetfinal.beans;
 
 import eseo.j2e.projetfinal.beans.article.DAOArticle;
 import eseo.j2e.projetfinal.beans.article.DAOArticleJPA;
+import eseo.j2e.projetfinal.beans.client.DAOClientJPA;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -24,7 +25,12 @@ public class DAOFactory {
     }
 
     public DAOArticleJPA getDAOArticle(){
-        emf = Persistence.createEntityManagerFactory("Article");
+        emf = Persistence.createEntityManagerFactory("Database");
         return new DAOArticleJPA(emf);
+    }
+
+    public DAOClientJPA getDAOClient(){
+        emf = Persistence.createEntityManagerFactory("Database");
+        return new DAOClientJPA(emf);
     }
 }

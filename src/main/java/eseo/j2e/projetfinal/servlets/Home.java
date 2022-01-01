@@ -3,13 +3,17 @@ package eseo.j2e.projetfinal.servlets;
 import eseo.j2e.projetfinal.beans.DAOFactory;
 import eseo.j2e.projetfinal.beans.article.Article;
 import eseo.j2e.projetfinal.beans.article.DAOArticleJPA;
+import eseo.j2e.projetfinal.beans.client.Client;
+import eseo.j2e.projetfinal.middleware.Authentification;
+import eseo.j2e.projetfinal.middleware.Middleware;
 
-import javax.persistence.Persistence;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet(value = "/store")
 public class Home extends HttpServlet {
@@ -19,18 +23,29 @@ public class Home extends HttpServlet {
     public void init() throws ServletException{
         DAOFactory daoFactory = new DAOFactory();
         daoArticle = daoFactory.getDAOArticle();
+
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Article> articles =  daoArticle.getArticles();
 
-        request.setAttribute("articles", articles);
-        request.setAttribute("content", "store");
-        request.setAttribute("sous_header_title", "Nos jeux");
-        request.setAttribute("sous_header_resume", "RETROUVEZ LES JEUX DISPONIBLES");
-        request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
+        Middleware auth = new Authentification();
+        Client client = auth.handle(request, response);
+        System.out.println(client);
+        if (client != null){
+            List<Article> articles =  daoArticle.getArticles();
+            request.setAttribute("articles", articles);
+            request.setAttribute("client", client);
+            request.setAttribute("content", "store");
+            request.setAttribute("sous_header_title", "Nos jeux");
+            request.setAttribute("sous_header_resume", "RETROUVEZ LES JEUX DISPONIBLES");
+            request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("login");
+        }
+
+
     }
 
     @Override
