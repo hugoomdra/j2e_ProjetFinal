@@ -1,10 +1,11 @@
 package eseo.j2e.projetfinal.beans.client;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import eseo.j2e.projetfinal.beans.commande.Commande;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="client")
@@ -38,6 +39,9 @@ public class Client implements Serializable {
 
     @Column(name="pays")
     private String pays;
+
+    @OneToMany( targetEntity=Commande.class, mappedBy="client" )
+    private List<Commande> commandes = new ArrayList<>();
 
     public Client(String firstName, String lastName, String email, String password, String rue, String ville, String codepostal, String pays) {
         this.firstName = firstName;
@@ -87,5 +91,9 @@ public class Client implements Serializable {
 
     public String getPays() {
         return pays;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
     }
 }

@@ -9,3 +9,18 @@ VALUES ('Call Of Duty : Vandguard', 69.99, 5, 'cod_vandguard', 'XBOX ONE'),
        ('Grand Theft Auto V', 50, 65, 'gta_5', 'PS4'),
        ('Mario Kart Deluxe 8', 80, 3, 'mario_kart', 'SWITCH'),
        ('Crash Team Racing', 45, 12, 'crash', 'PS4');
+
+INSERT INTO commande (id, client_id, type)
+VALUES (1, 1, 'done'),
+       (2, 1, 'done'),
+       (3, 1, 'done'),
+       (4, 1, 'editing');
+
+INSERT INTO commande_article (commande_id, article_id, qte)
+VALUES (1, 1, 3),
+       (1, 2, 2),
+       (2, 3, 12),
+       (3, 5, 1),
+       (3, 4, 2),
+       (3, 6, 3),
+       (4, 3, 1);

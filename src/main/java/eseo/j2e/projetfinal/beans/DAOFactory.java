@@ -3,6 +3,7 @@ package eseo.j2e.projetfinal.beans;
 import eseo.j2e.projetfinal.beans.article.DAOArticle;
 import eseo.j2e.projetfinal.beans.article.DAOArticleJPA;
 import eseo.j2e.projetfinal.beans.client.DAOClientJPA;
+import eseo.j2e.projetfinal.beans.commande.DAOCommandeJPA;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -33,4 +34,11 @@ public class DAOFactory {
         emf = Persistence.createEntityManagerFactory("Database");
         return new DAOClientJPA(emf);
     }
+
+    public DAOCommandeJPA getDAOCommande(){
+        emf = Persistence.createEntityManagerFactory("Database");
+        return new DAOCommandeJPA(emf);
+    }
+
+
 }

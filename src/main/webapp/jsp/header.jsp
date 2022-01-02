@@ -24,8 +24,8 @@
 
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="" href="cart.html"><i class="fas fa-user-circle"></i></a>
+                                    <a class="shopping-cart" href="panier"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="" href="user"><i class="fas fa-user-circle"></i></a>
                                 </div>
                             </li>
                         </ul>

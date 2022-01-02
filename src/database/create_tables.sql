@@ -1,3 +1,8 @@
+DROP TABLE commande_article;
+DROP TABLE commande;
+DROP TABLE article;
+DROP TABLE client;
+
 CREATE OR REPLACE TABLE client (
                                    id INT(13) NOT NULL AUTO_INCREMENT,
                                    firstName VARCHAR(40),
