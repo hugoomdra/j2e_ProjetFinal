@@ -25,7 +25,7 @@
                             <td class="align-middle">${ligne.article.name}</td>
                             <td class="align-middle">${ligne.qte}</td>
                             <td class="align-middle">${ligne.article.price * ligne.qte} €</td>
-                            <td class="align-middle"><a href="panier/delete?id=${ligne.id}&qte=${ligne.qte}&art_id=${ligne.article.id}">Supprimer</a></td>
+                            <td class="align-middle"><a href="panier/delete?id=${ligne.id}&qte=${ligne.qte}&art_id=${ligne.article.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -42,7 +42,7 @@
 
                 <div class="col-3 mt-3">
                     <form method="POST" class="text-right">
-                        <button class="btn btn-dark btn-lg btn-block" type="submit">Commander</button>
+                        <button class="btn btn-dark" type="submit">Commander</button>
                     </form>
                 </div>
             </c:if>

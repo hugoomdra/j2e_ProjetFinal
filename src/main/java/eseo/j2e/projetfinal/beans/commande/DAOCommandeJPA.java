@@ -72,16 +72,6 @@ public class DAOCommandeJPA implements DAOCommande{
         return null;
     }
 
-    @Override
-    public void update(Client client, String type) {
-
-    }
-
-    @Override
-    public void delete(int id) {
-
-    }
-
     public void validateCommand(Commande commande){
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
@@ -89,19 +79,6 @@ public class DAOCommandeJPA implements DAOCommande{
             commande.setType("done");
             entityManager.merge(commande);
             entityManager.getTransaction().commit();
-        }
-        finally {
-            entityManager.close();
-        }
-    }
-
-    public CommandeArticle getCommandLine(int id){
-        EntityManager entityManager = emf.createEntityManager();
-        entityManager.getTransaction().begin();
-        CommandeArticle commandeArticle = null;
-        try {
-            commandeArticle = entityManager.find(CommandeArticle.class, id);
-            return commandeArticle;
         }
         finally {
             entityManager.close();
@@ -121,7 +98,6 @@ public class DAOCommandeJPA implements DAOCommande{
         }
     }
 
-    @Transactional
     public void deleteCommandLine(int id){
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();

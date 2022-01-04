@@ -13,8 +13,6 @@ public interface DAOClient {
 
     public abstract List<Client> getClients();
 
-    public abstract void update(int id, String firstName, String lastName, String email, String password);
-
-    public abstract void delete(int id);
+    public  abstract void updateEnable(Client client);
 
 }

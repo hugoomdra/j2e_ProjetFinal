@@ -21,7 +21,7 @@
                         <tr>
                             <td class="align-middle">#2022CDE00${ligne.id}</td>
                             <td class="align-middle">${ligne.total} €</td>
-                            <td class="align-middle"><a href="commande?id=${ligne.id}">Voir</a></td>
+                            <td class="align-middle"><a href="commande?id=${ligne.id}" class="btn btn-info"><i class="fas fa-eye"></i></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

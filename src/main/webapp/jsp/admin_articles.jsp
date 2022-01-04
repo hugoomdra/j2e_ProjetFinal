@@ -8,7 +8,7 @@
         <div class="col-9">
         </div>
         <div class="col-3">
-            <a href="admin_article_create" class="cart-btn"><i class="fas fa-plus"></i> Ajouter un article</a>
+            <a href="admin_article_create" class="btn btn-dark btn-block"><i class="fas fa-plus"></i> Ajouter un article</a>
         </div>
     </div>
 
@@ -38,11 +38,12 @@
             <c:forEach var="article" items="${ articles }">
 
                 <tr>
-                    <td><img src="${ article.picture }" width="60px" alt=""></td>
-                    <td class="align-middle">${article.name}</td>
+
+                    <td><a href="articles?id=${ article.id }"><img src="${ article.picture }" width="60px" alt=""></a></td>
+                    <td class="align-middle"><a href="articles?id=${ article.id }">${article.name}</a></td>
                     <td class="align-middle">${article.quantity}</td>
                     <td class="align-middle">${article.price} €</td>
-                    <td class="align-middle"><a href="admin_article_update?id=${article.id}">Modifier</a> <a href="admin_article_delete?id=${article.id}">Supprimer</a></td>
+                    <td class="align-middle"><a href="admin_article_update?id=${article.id}" class="btn btn-info"><i class="fas fa-pen"></i></a> <a href="admin_article_delete?id=${article.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
             </c:forEach>
             </tbody>

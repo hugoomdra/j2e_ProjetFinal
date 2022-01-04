@@ -31,6 +31,9 @@ public class ArticleShow extends HttpServlet {
 
         Article article = daoArticle.getArticle(Integer.parseInt(request.getParameter("id")));
 
+        if (request.getParameter("error") != null && request.getParameter("error").equals("1")){
+            request.setAttribute("error", "Impossible, il n'en reste plus que " + article.getQuantity() + " en stock.");
+        }
         request.setAttribute("article", article);
         request.setAttribute("content", "article_show");
         request.setAttribute("sous_header_title", article.getName());

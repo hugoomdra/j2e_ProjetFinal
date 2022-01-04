@@ -16,18 +16,21 @@
                         <p class="text-warning">Bientôt en rupture de stock</p>
                     </c:if>
 
-
-                    <c:if test="${article.quantity <= 0}">
-                        <p class="text-danger">Plus en stock</p>
-                    </c:if>
-
                     <p class="single-product-pricing"><span>${article.type}</span> ${article.price} €</p>
                     <p>${article.description}</p>
                     <div class="single-product-form">
                         <form action="panier/add" method="POST">
-                            <input type="number" value="1" name="qte" placeholder="0">
-                            <input type="hidden" name="article_id" value="${article.id}">
-                            <button type="submit" class="cart-btn mt-4"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                            <c:if test="${article.quantity > 0}">
+                                <input type="number" value="1" min="1" name="qte" placeholder="0">
+                                <p class="text-danger">${error}</p>
+                                <input type="hidden" name="article_id" value="${article.id}">
+                                <button type="submit" class="btn btn-dark"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                            </c:if>
+                            <c:if test="${article.quantity <= 0}">
+                                <button type="button" class="btn btn-danger"><i class="fas fa-shopping-cart"></i> Rupture de stock</button>
+                            </c:if>
+
+
                         </form>
                     </div>
                 </div>

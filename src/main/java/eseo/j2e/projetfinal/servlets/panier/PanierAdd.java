@@ -51,7 +51,7 @@ public class PanierAdd extends HttpServlet {
         Article article = daoArticle.getArticle(article_id);
 
         if (article.getQuantity() < qte){
-            response.sendRedirect("../articles?id=" + article_id);
+            response.sendRedirect("../articles?id=" + article_id + "&error=1");
         }else{
             daoCommande.addCommandLine(commande, article, qte);
             daoArticle.update(article.getId(), article.getName(), article.getDescription(),article.getPrice(), article.getQuantity() - qte, article.getPicture(), article.getType());
