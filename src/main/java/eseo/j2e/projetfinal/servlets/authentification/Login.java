@@ -3,9 +3,8 @@ package eseo.j2e.projetfinal.servlets.authentification;
 import eseo.j2e.projetfinal.beans.DAOFactory;
 import eseo.j2e.projetfinal.beans.client.Client;
 import eseo.j2e.projetfinal.beans.client.DAOClientJPA;
-import eseo.j2e.projetfinal.middleware.Authentification;
 import eseo.j2e.projetfinal.middleware.Middleware;
-import org.hibernate.Session;
+
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -25,8 +24,8 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Middleware auth = new Authentification();
-        if (auth.handle(request, response) == null) {
+        Middleware middleware = new Middleware();
+        if (middleware.authentification(request, response) == null) {
             request.setAttribute("content", "login");
             request.getRequestDispatcher("/jsp/authentification/template.jsp").forward(request, response);
         }else{
@@ -43,13 +42,19 @@ public class Login extends HttpServlet {
         Client client = daoClient.getClientWithMail(email);
 
         if (client != null){
-            System.out.println(client.getPassword());
-            System.out.println(password);
 
-            if (client.getPassword().equals(password) ){
-                System.out.println("store");
+            if (client.getPassword().equals(password)){
+
+                if (client.getEnable()){
                 response.addCookie(new Cookie("email", email));
                 response.sendRedirect("store");
+                }else{
+                    request.setAttribute("error", "Votre compte est bloqué. Veuillez contacter le service client.");
+                    request.setAttribute("email", email);
+                    request.setAttribute("content", "login");
+                    request.getRequestDispatcher("/jsp/authentification/template.jsp").forward(request, response);
+                }
+
             }else{
                 request.setAttribute("error", "Le mot de passe est incorrecte.");
                 request.setAttribute("email", email);

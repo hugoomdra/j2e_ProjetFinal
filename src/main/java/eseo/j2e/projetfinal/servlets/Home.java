@@ -4,16 +4,13 @@ import eseo.j2e.projetfinal.beans.DAOFactory;
 import eseo.j2e.projetfinal.beans.article.Article;
 import eseo.j2e.projetfinal.beans.article.DAOArticleJPA;
 import eseo.j2e.projetfinal.beans.client.Client;
-import eseo.j2e.projetfinal.middleware.Authentification;
 import eseo.j2e.projetfinal.middleware.Middleware;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @WebServlet(value = "/store")
 public class Home extends HttpServlet {
@@ -30,9 +27,8 @@ public class Home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        Middleware auth = new Authentification();
-        Client client = auth.handle(request, response);
-        System.out.println(client);
+        Middleware middleware = new Middleware();
+        Client client = middleware.authentification(request, response);
         if (client != null){
             List<Article> articles =  daoArticle.getArticles();
             request.setAttribute("articles", articles);

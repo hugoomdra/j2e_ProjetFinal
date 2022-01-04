@@ -5,6 +5,14 @@
     <div class="container">
         <div class="row">
 
+            <div class="col-3 mb-4">
+                <p class="font-weight-bold p-0 m-0">Adresse :</p>
+                <p class="p-0 m-0">${client.firstName} ${client.lastName}</p>
+                <p class="p-0 m-0">${client.rue}</p>
+                <p class="p-0 m-0">${client.codepostal} - ${client.ville}</p>
+                <p class="p-0 m-0">${client.pays}</p>
+            </div>
+
             <c:if test="${commande != null}">
                 <table class="table">
                     <thead>
@@ -13,7 +21,6 @@
                         <th scope="col">Article</th>
                         <th scope="col">Quantité</th>
                         <th scope="col">Prix</th>
-                        <th></th>
 
                     </tr>
                     </thead>
@@ -24,8 +31,7 @@
                             <td><img src="${ ligne.article.picture }" width="60px" alt=""></td>
                             <td class="align-middle">${ligne.article.name}</td>
                             <td class="align-middle">${ligne.qte}</td>
-                            <td class="align-middle">${ligne.article.price * ligne.qte} €</td>
-                            <td class="align-middle"><a href="panier/delete?id=${ligne.id}&qte=${ligne.qte}&art_id=${ligne.article.id}">Supprimer</a></td>
+                            <td class="align-middle">${ligne.total} €</td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -35,20 +41,6 @@
 
                     <p class="text-right font-weight-bold">Total : ${commande.total} €</p>
                 </div>
-
-                <div class="col-9">
-
-                </div>
-
-                <div class="col-3 mt-3">
-                    <form method="POST" class="text-right">
-                        <button class="btn btn-dark btn-lg btn-block" type="submit">Commander</button>
-                    </form>
-                </div>
-            </c:if>
-
-            <c:if test="${commande == null}">
-                <p>Votre panier est vide. Ajoutez des articles à votre panier.</p>
             </c:if>
 
         </div>

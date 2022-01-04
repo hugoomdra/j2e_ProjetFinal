@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="client")
@@ -39,6 +40,12 @@ public class Client implements Serializable {
 
     @Column(name="pays")
     private String pays;
+
+    @Column(name="enable")
+    private Boolean enable;
+
+    @Column(name="isAdmin")
+    private Boolean isAdmin;
 
     @OneToMany( targetEntity=Commande.class, mappedBy="client" )
     private List<Commande> commandes = new ArrayList<>();
@@ -94,6 +101,18 @@ public class Client implements Serializable {
     }
 
     public List<Commande> getCommandes() {
-        return commandes;
+        return commandes.stream().filter(commande -> commande.getType().equals("done")).collect(Collectors.toList());
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 }

@@ -6,6 +6,7 @@ import eseo.j2e.projetfinal.beans.commande_article.CommandeArticle;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class DAOCommandeJPA implements DAOCommande{
@@ -54,7 +55,16 @@ public class DAOCommandeJPA implements DAOCommande{
 
     @Override
     public Commande getCommande(int id) {
-        return null;
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        Commande commande = null;
+        try {
+            commande = entityManager.find(Commande.class, id);
+            return commande;
+        }
+        finally {
+            entityManager.close();
+        }
     }
 
     @Override
@@ -85,6 +95,19 @@ public class DAOCommandeJPA implements DAOCommande{
         }
     }
 
+    public CommandeArticle getCommandLine(int id){
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        CommandeArticle commandeArticle = null;
+        try {
+            commandeArticle = entityManager.find(CommandeArticle.class, id);
+            return commandeArticle;
+        }
+        finally {
+            entityManager.close();
+        }
+    }
+
     public void addCommandLine(Commande commande, Article article, int qte){
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
@@ -94,7 +117,20 @@ public class DAOCommandeJPA implements DAOCommande{
             entityManager.getTransaction().commit();
         }
         finally {
-            System.out.println("erreur super");
+            entityManager.close();
+        }
+    }
+
+    @Transactional
+    public void deleteCommandLine(int id){
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        try {
+            CommandeArticle commandeArticle = entityManager.find(CommandeArticle.class, id);
+            entityManager.remove(commandeArticle);
+            entityManager.getTransaction().commit();
+        }
+        finally {
             entityManager.close();
         }
     }

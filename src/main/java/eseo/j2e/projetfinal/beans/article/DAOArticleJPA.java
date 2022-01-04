@@ -1,5 +1,7 @@
 package eseo.j2e.projetfinal.beans.article;
 
+import eseo.j2e.projetfinal.beans.client.Client;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,12 +16,12 @@ public class DAOArticleJPA implements DAOArticle{
     }
 
     @Override
-    public void add(String name, double price, int quantity, String picture, String type) {
+    public void add(String name, String description, double price, int quantity, String picture, String type) {
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
 
         try{
-            entityManager.persist(new Article(name, price, quantity, picture, type));
+            entityManager.persist(new Article(name, description, price, quantity, picture, type));
             entityManager.getTransaction().commit();
         }
         finally {
@@ -48,7 +50,7 @@ public class DAOArticleJPA implements DAOArticle{
         entityManager.getTransaction().begin();
 
         try {
-            articles = entityManager.createQuery("from Article", Article.class).getResultList();
+            articles = entityManager.createQuery("from Article where deleted is FALSE", Article.class).getResultList();
         }
         finally {
             entityManager.close();
@@ -57,12 +59,30 @@ public class DAOArticleJPA implements DAOArticle{
     }
 
     @Override
-    public void update(String name, double price, int quantity, String picture, String type) {
-
+    public void update(int id, String name, String description, double price, int quantity, String picture, String type) {
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        try {
+            Article article = new Article(id, name, description, price, quantity, picture, type);
+            entityManager.merge(article);
+            entityManager.getTransaction().commit();
+        }
+        finally {
+            entityManager.close();
+        }
     }
 
-    @Override
-    public void delete(int id) {
-
+    public void delete(int id){
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        Article article = getArticle(id);
+        article.setDeleted(true);
+        try {
+            entityManager.merge(article);
+            entityManager.getTransaction().commit();
+        }
+        finally {
+            entityManager.close();
+        }
     }
 }

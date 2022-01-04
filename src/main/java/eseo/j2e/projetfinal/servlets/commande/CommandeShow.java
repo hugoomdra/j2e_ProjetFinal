@@ -1,4 +1,4 @@
-package eseo.j2e.projetfinal.servlets.panier;
+package eseo.j2e.projetfinal.servlets.commande;
 
 import eseo.j2e.projetfinal.beans.DAOFactory;
 import eseo.j2e.projetfinal.beans.client.Client;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/panier")
-public class PanierShow extends HttpServlet {
+@WebServlet("/commande")
+public class CommandeShow extends HttpServlet {
 
     private DAOCommandeJPA daoCommande;
 
@@ -29,29 +29,31 @@ public class PanierShow extends HttpServlet {
 
         Middleware middleware = new Middleware();
         Client client = middleware.authentification(request, response);
-        request.setAttribute("client", client);
 
-        Commande commande = daoCommande.getEditCommande(client);
+        Commande commande = daoCommande.getCommande(Integer.parseInt(request.getParameter("id")));
 
+        if (commande != null){
 
-        request.setAttribute("commande", commande);
-        request.setAttribute("content", "panier_show");
-        request.setAttribute("sous_header_title", "Panier");
-        request.setAttribute("sous_header_resume", "Votre panier");
-        request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
+            if (commande.getClient().getEmail().equals(client.getEmail())){
+
+                request.setAttribute("client", client);
+                request.setAttribute("commande", commande);
+                request.setAttribute("content", "commande_show");
+                request.setAttribute("sous_header_title", "#2022CDE00" + commande.getId());
+                request.setAttribute("sous_header_resume", "Détails de votre commande");
+                request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
+            }else{
+                response.sendRedirect("forbidden");
+            }
+
+        }else{
+            response.sendRedirect("user");
+        }
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        Middleware middleware = new Middleware();
-        Client client = middleware.authentification(request, response);
-        Commande commande = daoCommande.getEditCommande(client);
-
-        daoCommande.validateCommand(commande);
-
-        response.sendRedirect("commande?id=" + commande.getId());
 
     }
 }

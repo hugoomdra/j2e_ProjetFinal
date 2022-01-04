@@ -20,12 +20,16 @@
                             <li class="${content == 'store' ? "current-list-item" : ""}"><a href="store">Nos jeux</a>
                             </li>
                             <li class="${content == 'about' ? "current-list-item" : ""}"><a href="about">A propos de nous</a></li>
-                            <li><a href="">Nous contacter</a></li>
+
+                            <c:if test="${client.admin == true}">
+                            <li class="${content.substring(0, 3) == 'adm' ? "current-list-item" : ""}"><a href="admin_articles">Administration</a></li>
+                            </c:if>
 
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="panier"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="" href="user"><i class="fas fa-user-circle"></i></a>
+                                    <a style="${content.substring(0, 3) == 'pan' ? "color:#D7782A;" : ""}" class="shopping-cart" href="panier"><i class="fas fa-shopping-cart"></i></a>
+                                    <a style="${content == 'user' || content == 'commande_show' ? "color:#D7782A;" : ""}" href="user"><i class="fas fa-user-circle"></i> ${client.firstName} ${client.lastName}</a>
+                                    <a class="" href="logout"><i class="fas fa-sign-out-alt"></i></a>
                                 </div>
                             </li>
                         </ul>
@@ -38,3 +42,4 @@
         </div>
     </div>
 </div>
+

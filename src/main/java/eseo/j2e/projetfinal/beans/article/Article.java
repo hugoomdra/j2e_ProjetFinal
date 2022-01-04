@@ -17,6 +17,9 @@ public class Article implements Serializable {
     @Column(name="name")
     private String name;
 
+    @Column(name="description")
+    private String description;
+
     @Column(name="price")
     private double price;
 
@@ -29,8 +32,23 @@ public class Article implements Serializable {
     @Column(name="type")
     private String type;
 
-    public Article(String name, double price, int quantity, String picture, String type) {
+    @Column(name="deleted")
+    private boolean deleted;
+
+
+    public Article(String name, String description, double price, int quantity, String picture, String type) {
         this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.picture = picture;
+        this.type = type;
+    }
+
+    public Article(int id, String name, String description, double price, int quantity, String picture, String type) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.picture = picture;
@@ -49,6 +67,10 @@ public class Article implements Serializable {
         return name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -65,4 +87,11 @@ public class Article implements Serializable {
         return type;
     }
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

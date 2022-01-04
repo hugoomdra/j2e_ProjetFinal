@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="single-product-img">
-                    <img src="assets/img/products/${article.picture}.png" alt="">
+                    <img src="${article.picture}" alt="">
                 </div>
             </div>
             <div class="col-md-7">
@@ -22,7 +22,7 @@
                     </c:if>
 
                     <p class="single-product-pricing"><span>${article.type}</span> ${article.price} €</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta sint dignissimos, rem commodi cum voluptatem quae reprehenderit repudiandae ea tempora incidunt ipsa, quisquam animi perferendis eos eum modi! Tempora, earum.</p>
+                    <p>${article.description}</p>
                     <div class="single-product-form">
                         <form action="panier/add" method="POST">
                             <input type="number" value="1" name="qte" placeholder="0">

@@ -1,36 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="container-fluid mb-100 mt-100">
     <div class="row">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">Article</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Prix</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="article" items="${ articles }">
+
+                    <tr>
+                        <td><img src="${ article.picture }" style="width: 60px" alt=""></td>
+                        <td class="align-middle">${article.name}</td>
+                        <td class="align-middle">${article.quantity}</td>
+                        <td class="align-middle">${ligne.article.price} €</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
     </div>
 </div>

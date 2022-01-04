@@ -13,7 +13,8 @@ CREATE OR REPLACE TABLE client (
                                    ville VARCHAR(255),
                                    codepostal VARCHAR(255),
                                    pays VARCHAR(255),
-                                   enable boolean default (false),
+                                   enable boolean default (true),
+                                   isAdmin boolean default (false),
                                    PRIMARY KEY(id)
 );
 
@@ -21,15 +22,18 @@ CREATE OR REPLACE TABLE client (
 CREATE OR REPLACE TABLE article (
                                     id INT(13) NOT NULL AUTO_INCREMENT,
                                     name VARCHAR(100),
+                                    description VARCHAR(250),
                                     price DECIMAL(10, 2),
                                     quantity INT(10),
                                     picture VARCHAR(255),
                                     type ENUM('PS4', 'SWITCH', 'XBOX ONE'),
+                                    deleted BOOLEAN default FALSE,
                                     PRIMARY KEY(id)
 );
 
 CREATE OR REPLACE TABLE commande (
                                      id INT(13) NOT NULL AUTO_INCREMENT,
+                                     date datetime NOT NULL DEFAULT NOW(),
                                      client_id INT(13) NOT NULL,
                                      type ENUM('editing', 'done'),
                                      PRIMARY KEY(id),

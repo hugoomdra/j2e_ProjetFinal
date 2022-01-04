@@ -24,7 +24,6 @@ public class DAOClientJPA implements DAOClient{
             entityManager.getTransaction().commit();
         }
         finally {
-            System.out.println("erreur");
             entityManager.close();
         }
     }
@@ -34,10 +33,8 @@ public class DAOClientJPA implements DAOClient{
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
         Client client = null;
-        System.out.println(id);
         try {
             client = entityManager.find(Client.class, id);
-            System.out.println(client);
             return client;
         }
         finally {
@@ -77,6 +74,18 @@ public class DAOClientJPA implements DAOClient{
     @Override
     public void update(int id, String firstName, String lastName, String email, String password) {
 
+    }
+
+    public void updateEnable(Client client){
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.merge(client);
+            entityManager.getTransaction().commit();
+        }
+        finally {
+            entityManager.close();
+        }
     }
 
     @Override

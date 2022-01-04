@@ -9,7 +9,7 @@
                 <div class="col-lg-4 col-md-6 text-center strawberry">
                     <div class="single-product-item">
                         <div class="product-image">
-                            <a href="articles?id=${ article.id }"><img src="assets/img/products/${ article.picture }.png" alt=""></a>
+                            <a href="articles?id=${ article.id }"><img src="${ article.picture }" alt=""></a>
                         </div>
                         <h3>${ article.name }</h3>
                         <p class="product-price"><span>${ article.type }</span> ${ article.price } € </p>

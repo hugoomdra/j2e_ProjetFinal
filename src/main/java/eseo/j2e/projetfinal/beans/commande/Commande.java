@@ -5,6 +5,7 @@ import eseo.j2e.projetfinal.beans.commande_article.CommandeArticle;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +65,9 @@ public class Commande implements Serializable {
         this.commandeArticles.add(commandeArticle);
     }
 
-    public double getTotal() {
+    public String getTotal() {
         double total = commandeArticles.stream().mapToDouble(ligne -> ligne.getArticle().getPrice() * ligne.getQte()).sum();
-        return total;
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(total).replace(",", ".");
     }
 }

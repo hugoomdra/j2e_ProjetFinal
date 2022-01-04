@@ -1,11 +1,11 @@
 package eseo.j2e.projetfinal.beans.commande_article;
 
 import eseo.j2e.projetfinal.beans.article.Article;
-import eseo.j2e.projetfinal.beans.client.Client;
 import eseo.j2e.projetfinal.beans.commande.Commande;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 @Entity
 @Table(name="commande_article")
@@ -50,5 +50,10 @@ public class CommandeArticle implements Serializable {
 
     public int getQte() {
         return qte;
+    }
+
+    public String getTotal(){
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(this.qte * this.article.getPrice()).replace(",", ".");
     }
 }

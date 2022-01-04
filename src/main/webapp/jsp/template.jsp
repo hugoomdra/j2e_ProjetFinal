@@ -59,7 +59,6 @@
 <!-- end footer -->
 
 
-
 <!-- jquery -->
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <!-- bootstrap -->
@@ -68,6 +67,7 @@
 <script src="assets/js/jquery.countdown.js"></script>
 <!-- isotope -->
 <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+
 <!-- waypoints -->
 <script src="assets/js/waypoints.js"></script>
 <!-- owl carousel -->

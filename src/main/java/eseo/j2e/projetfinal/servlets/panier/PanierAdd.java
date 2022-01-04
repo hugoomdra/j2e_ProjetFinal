@@ -2,13 +2,12 @@ package eseo.j2e.projetfinal.servlets.panier;
 
 import eseo.j2e.projetfinal.beans.DAOFactory;
 import eseo.j2e.projetfinal.beans.article.Article;
-import eseo.j2e.projetfinal.beans.article.DAOArticle;
 import eseo.j2e.projetfinal.beans.article.DAOArticleJPA;
 import eseo.j2e.projetfinal.beans.client.Client;
 import eseo.j2e.projetfinal.beans.commande.Commande;
 import eseo.j2e.projetfinal.beans.commande.DAOCommandeJPA;
-import eseo.j2e.projetfinal.middleware.Authentification;
 import eseo.j2e.projetfinal.middleware.Middleware;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,8 +36,8 @@ public class PanierAdd extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Middleware auth = new Authentification();
-        Client client = auth.handle(request, response);
+        Middleware middleware = new Middleware();
+        Client client = middleware.authentification(request, response);
         int qte = Integer.parseInt(request.getParameter("qte"));
         int article_id = Integer.parseInt(request.getParameter("article_id"));
 
@@ -46,8 +45,6 @@ public class PanierAdd extends HttpServlet {
 
         if (commande == null){
             daoCommande.add(client, "editing");
-            System.out.println("creation");
-            System.out.println(commande);
             commande = daoCommande.getEditCommande(client);
         }
 
@@ -56,11 +53,9 @@ public class PanierAdd extends HttpServlet {
         if (article.getQuantity() < qte){
             response.sendRedirect("../articles?id=" + article_id);
         }else{
-            System.out.println(article.getName());
             daoCommande.addCommandLine(commande, article, qte);
+            daoArticle.update(article.getId(), article.getName(), article.getDescription(),article.getPrice(), article.getQuantity() - qte, article.getPicture(), article.getType());
             response.sendRedirect("../panier");
         }
-
-
     }
 }

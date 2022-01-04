@@ -1,10 +1,9 @@
 package eseo.j2e.projetfinal.servlets.authentification;
 
 import eseo.j2e.projetfinal.beans.DAOFactory;
-import eseo.j2e.projetfinal.beans.client.Client;
 import eseo.j2e.projetfinal.beans.client.DAOClientJPA;
-import eseo.j2e.projetfinal.middleware.Authentification;
 import eseo.j2e.projetfinal.middleware.Middleware;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +26,8 @@ public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Middleware auth = new Authentification();
-        if (auth.handle(request, response) == null) {
+        Middleware middleware = new Middleware();
+        if (middleware.authentification(request, response) == null) {
             request.setAttribute("content", "register");
             request.getRequestDispatcher("/jsp/authentification/template.jsp").forward(request, response);
         }else{
