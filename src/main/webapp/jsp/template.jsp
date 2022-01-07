@@ -33,6 +33,16 @@
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+
+    <style>
+
+        #main-app{
+            min-height:calc(100vh - 87px);
+        }
+        
+    </style>
+    </style>
+
 </head>
 <body>
 
@@ -44,16 +54,18 @@
 </div>
 <!--PreLoader Ends-->
 
-<!-- header -->
-<jsp:include page="header.jsp"/>
-<!-- end header -->
+<div id="main-app">
+    <!-- header -->
+    <jsp:include page="header.jsp"/>
+    <!-- end header -->
 
-<!-- breadcrumb-section -->
-<jsp:include page="sous_header.jsp"/>
-<!-- end breadcrumb section -->
+    <!-- breadcrumb-section -->
+    <jsp:include page="sous_header.jsp"/>
+    <!-- end breadcrumb section -->
 
-<jsp:include page="${content}.jsp"/>
+    <jsp:include page="${content}.jsp"/>
 
+</div>
 <!-- footer -->
 <jsp:include page="footer.jsp"/>
 <!-- end footer -->

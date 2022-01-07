@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!-- copyright -->
-<div class="copyright">
+<div class="copyright" id="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12">

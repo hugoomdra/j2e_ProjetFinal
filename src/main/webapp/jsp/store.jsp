@@ -14,10 +14,10 @@
                                 <p class="card-text" style="font-size: 18px">${ article.price } €</p>
                                 <div class="mt-2">
                                     <c:if test="${article.quantity > 0}">
-                                        <a href="" class="btn btn-dark"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
+                                        <a href="articles?id=${ article.id }" class="btn btn-dark"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
                                     </c:if>
                                     <c:if test="${article.quantity <= 0}">
-                                        <a href="" class="btn btn-danger"><i class="fas fa-shopping-cart"></i> Rupture de stock</a>
+                                        <a href="articles?id=${ article.id }" class="btn btn-danger"><i class="fas fa-shopping-cart"></i> Rupture de stock</a>
                                     </c:if>
                                 </div>
                             </div>

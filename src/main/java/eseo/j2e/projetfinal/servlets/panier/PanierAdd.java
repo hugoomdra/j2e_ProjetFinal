@@ -31,6 +31,28 @@ public class PanierAdd extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Middleware middleware = new Middleware();
+        Client client = middleware.authentification(request, response);
+        int article_id = Integer.parseInt(request.getParameter("article_id"));
+
+        Commande commande = daoCommande.getEditCommande(client);
+
+        if (commande == null){
+            daoCommande.add(client, "editing");
+            commande = daoCommande.getEditCommande(client);
+        }
+
+        Article article = daoArticle.getArticle(article_id);
+
+        if (article.getQuantity() < 1){
+            response.sendRedirect("../articles?id=" + article_id + "&error=1");
+        }else{
+            daoCommande.addCommandLine(commande, article, 1);
+            daoArticle.update(article.getId(), article.getName(), article.getDescription(),article.getPrice(), article.getQuantity() - 1, article.getPicture(), article.getType());
+            response.sendRedirect("../panier");
+        }
+
+
     }
 
     @Override

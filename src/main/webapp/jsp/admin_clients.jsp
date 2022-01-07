@@ -32,7 +32,7 @@
                     <td>
                         <form METHOD="post">
                             <input type="hidden" name="client_id" value="${client.id}">
-                            <button type="submit">${client.enable ? "Désactiver" : "Activer"}</button>
+                            <button type="submit" class="btn ${client.enable == true ? "btn-danger" : "btn-success"}">${client.enable ? "Désactiver" : "Activer"}</button>
                         </form>
                     </td>
                 </tr>

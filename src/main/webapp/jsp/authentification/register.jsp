@@ -19,44 +19,44 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_mail">Email</label>
-                    <input name="email" type="email" id="input_mail" class="form-control form-control-lg" />
+                    <input name="email" required type="email" id="input_mail" class="form-control form-control-lg" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_firstName">Prénom</label>
-                    <input name="firstName" type="text" value="${firstName}" id="input_firstName" class="form-control form-control-lg" />
+                    <input name="firstName" required type="text" value="${firstName}" id="input_firstName" class="form-control form-control-lg" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_lastName">Nom</label>
-                    <input name="lastName" type="text" value="${lastName}" id="input_lastName" class="form-control form-control-lg" />
+                    <input name="lastName" required type="text" value="${lastName}" id="input_lastName" class="form-control form-control-lg" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_password">Mot de passe</label>
-                    <input name="password" type="password" id="input_password" class="form-control form-control-lg" />
+                    <input name="password" required type="password" id="input_password" class="form-control form-control-lg" />
                   </div>
 
                 </div>
                 <div class="col-sm">
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_rue">Rue</label>
-                    <input name="rue" type="text" id="input_rue" value="${rue}" class="form-control form-control-lg" />
+                    <input name="rue" required type="text" id="input_rue" value="${rue}" class="form-control form-control-lg" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_ville">Ville</label>
-                    <input name="ville" type="text" id="input_ville" value="${ville}" class="form-control form-control-lg" />
+                    <input name="ville" required type="text" id="input_ville" value="${ville}" class="form-control form-control-lg" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_codepostal">Code Postal</label>
-                    <input name="codepostal" type="text" value="${codepostal}" id="input_codepostal" class="form-control form-control-lg" />
+                    <input name="codepostal" required type="text" value="${codepostal}" id="input_codepostal" class="form-control form-control-lg" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="input_pays">Pays</label>
-                    <input name="pays" type="text" value="${pays}" id="input_pays" class="form-control form-control-lg" />
+                    <input name="pays" required type="text" value="${pays}" id="input_pays" class="form-control form-control-lg" />
                   </div>
                 </div>
               </div>

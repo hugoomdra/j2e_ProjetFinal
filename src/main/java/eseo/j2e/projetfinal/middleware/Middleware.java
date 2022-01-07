@@ -15,22 +15,25 @@ public class Middleware{
 
     public Client authentification(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        String email = null;
 
-        Optional<String> email = Arrays.stream(request.getCookies())
-                .filter(c -> "email".equals(c.getName()))
-                .map(Cookie::getValue)
-                .findAny();
+        Cookie[] cookies = request.getCookies();
 
-        if (!email.isPresent()) {
+        if (cookies != null) {
+            for (int i = 0; i < cookies.length; i++) {
+                if (cookies[i].getName().equals("email")) {
+                    email = cookies[i].getValue();
+                }
+            }
+        }
+
+        if(email == null){
             return null;
-
         }else{
-
             DAOFactory daoFactory = new DAOFactory();
             DAOClientJPA daoClient = daoFactory.getDAOClient();
-            Client client = daoClient.getClientWithMail(email.get());
+            Client client = daoClient.getClientWithMail(email);
             return client;
-
         }
     }
 

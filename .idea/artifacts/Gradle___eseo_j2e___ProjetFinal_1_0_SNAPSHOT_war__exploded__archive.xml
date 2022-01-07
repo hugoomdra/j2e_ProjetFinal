@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="Gradle : eseo.j2e : ProjetFinal-1.0-SNAPSHOT.war (exploded) archive">
-    <output-path>$PROJECT_DIR$/out/artifacts/Gradle___eseo_j2e___ProjetFinal_1_0_SNAPSHOT_war__exploded__archive</output-path>
-    <root id="archive" name="latest_version.war">
-      <element id="artifact" artifact-name="Gradle : eseo.j2e : ProjetFinal-1.0-SNAPSHOT.war (exploded)" />
-    </root>
-  </artifact>
-</component>

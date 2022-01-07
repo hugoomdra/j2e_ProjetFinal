@@ -20,4 +20,7 @@ public interface DAOCommande {
 
     public abstract void deleteCommandLine(int id);
 
-}
+    abstract void validateCommand(Commande commande);
+
+
+    }

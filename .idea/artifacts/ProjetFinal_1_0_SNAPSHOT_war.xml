@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ProjetFinal-1.0-SNAPSHOT.war">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProjetFinal_1_0_SNAPSHOT_war</output-path>
+    <root id="archive" name="ProjetFinal-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ProjetFinal-1.0-SNAPSHOT:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="jpa-descriptors" facet="ProjetFinal.main/jpa/JPA" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

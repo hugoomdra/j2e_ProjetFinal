@@ -19,7 +19,7 @@ public class About extends HttpServlet {
 
         request.setAttribute("content", "about");
         request.setAttribute("sous_header_title", "A propos de nous");
-        request.setAttribute("sous_header_resume", "Découvrez en plus sur notre équipe de passioné");
+        request.setAttribute("sous_header_resume", "Découvrez en plus sur notre équipe de passionés");
         request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
     }
 

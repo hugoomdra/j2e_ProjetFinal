@@ -23,6 +23,8 @@ public class DAOArticleJPA implements DAOArticle{
         try{
             entityManager.persist(new Article(name, description, price, quantity, picture, type));
             entityManager.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         finally {
             entityManager.close();
@@ -35,22 +37,31 @@ public class DAOArticleJPA implements DAOArticle{
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
 
+        Article article = null;
         try {
-            return entityManager.find(Article.class, id);
+            article = entityManager.find(Article.class, id);
+            entityManager.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         finally {
             entityManager.close();
         }
+        return article;
+
     }
 
     @Override
     public List<Article> getArticles() {
-        List<Article> articles;
+        List<Article> articles = null;
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
 
         try {
             articles = entityManager.createQuery("from Article where deleted is FALSE", Article.class).getResultList();
+            entityManager.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         finally {
             entityManager.close();
@@ -66,12 +77,15 @@ public class DAOArticleJPA implements DAOArticle{
             Article article = new Article(id, name, description, price, quantity, picture, type);
             entityManager.merge(article);
             entityManager.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         finally {
             entityManager.close();
         }
     }
 
+    @Override
     public void delete(int id){
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();
@@ -80,6 +94,8 @@ public class DAOArticleJPA implements DAOArticle{
         try {
             entityManager.merge(article);
             entityManager.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         finally {
             entityManager.close();

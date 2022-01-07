@@ -6,11 +6,12 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="section-title">
                     <h3>Notre <span class="orange-text">Equipe</span></h3>
-                    <p>A votre disposition quotidienement pour vous accompagner et vous conseiller dans les choix de jeux vidéos.</p>
+                    <p>A votre disposition quotidiennement pour vous accompagner et vous conseiller dans les choix de jeux vidéos.</p>
                 </div>
             </div>
         </div>
         <div class="row">
+            <div class="col-lg-2 col-md-3"></div>
             <div class="col-lg-4 col-md-6">
                 <div class="single-team-item">
                     <div class="team-bg team-bg-1"></div>
@@ -33,6 +34,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="col-lg-2 col-md-3"></div>
         </div>
     </div>
 </div>

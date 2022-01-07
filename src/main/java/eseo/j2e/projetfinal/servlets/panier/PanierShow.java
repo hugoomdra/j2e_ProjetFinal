@@ -29,16 +29,21 @@ public class PanierShow extends HttpServlet {
 
         Middleware middleware = new Middleware();
         Client client = middleware.authentification(request, response);
-        request.setAttribute("client", client);
 
-        Commande commande = daoCommande.getEditCommande(client);
+        if (client != null){
+            request.setAttribute("client", client);
+
+            Commande commande = daoCommande.getEditCommande(client);
 
 
-        request.setAttribute("commande", commande);
-        request.setAttribute("content", "panier_show");
-        request.setAttribute("sous_header_title", "Panier");
-        request.setAttribute("sous_header_resume", "Votre panier");
-        request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
+            request.setAttribute("commande", commande);
+            request.setAttribute("content", "panier_show");
+            request.setAttribute("sous_header_title", "Panier");
+            request.setAttribute("sous_header_resume", "Votre panier");
+            request.getRequestDispatcher("/jsp/template.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("store");
+        }
 
     }
 

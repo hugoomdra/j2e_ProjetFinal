@@ -50,6 +50,20 @@ public class Client implements Serializable {
     @OneToMany( targetEntity=Commande.class, mappedBy="client" )
     private List<Commande> commandes = new ArrayList<>();
 
+
+    public Client(String firstName, String lastName, String email, String password, String rue, String ville, String codepostal, String pays, boolean enable, boolean isAdmin) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.rue = rue;
+        this.ville = ville;
+        this.codepostal = codepostal;
+        this.pays = pays;
+        this.enable = enable;
+        this.isAdmin = isAdmin;
+    }
+
     public Client(String firstName, String lastName, String email, String password, String rue, String ville, String codepostal, String pays) {
         this.firstName = firstName;
         this.lastName = lastName;
